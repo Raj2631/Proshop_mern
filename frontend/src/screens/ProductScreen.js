@@ -9,7 +9,7 @@ import { Form } from 'react-bootstrap'
 import Message from '../components/Message'
 
 const ProductScreen = ({ match, history }) => {
-  const [quantity, setQuantity] = useState(1)
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   const productDetails = useSelector((state) => state.productDetails)
@@ -20,7 +20,7 @@ const ProductScreen = ({ match, history }) => {
   }, [match, dispatch])
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${quantity}`)
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
   return (
     <>
@@ -33,6 +33,7 @@ const ProductScreen = ({ match, history }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <Row>
+          {console.log(error, loading)}
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
@@ -78,8 +79,8 @@ const ProductScreen = ({ match, history }) => {
                       <Col>
                         <Form.Control
                           as="select"
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
                         >
                           {[...Array(product.countInStock).keys()].map((e) => (
                             <option key={e + 1} value={e + 1}>
