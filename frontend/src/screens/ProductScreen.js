@@ -12,12 +12,13 @@ const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
-  const productDetails = useSelector((state) => state.productDetails)
-  const { loading, error, product } = productDetails
+  const { loading, error, product } = useSelector(
+    (state) => state.productDetails
+  )
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
-  }, [match, dispatch])
+  }, [match.params.id, dispatch])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
@@ -33,7 +34,6 @@ const ProductScreen = ({ match, history }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <Row>
-          {console.log(error, loading)}
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
