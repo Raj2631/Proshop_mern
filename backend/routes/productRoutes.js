@@ -4,11 +4,11 @@ import {
   getProductById,
 } from '../controllers/productControllers.js'
 
+const router = express.Router()
+
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public
-
-const router = express.Router()
 
 router.route('/').get(getProducts)
 
