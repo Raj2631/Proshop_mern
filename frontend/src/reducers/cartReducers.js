@@ -9,6 +9,7 @@ export const cartReducer = (
   state = {
     cartItems: [],
     shippingAddress: {},
+    paymentMethod: 'PayPal',
   },
   action
 ) => {
