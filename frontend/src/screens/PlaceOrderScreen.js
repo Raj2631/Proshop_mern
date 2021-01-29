@@ -29,7 +29,7 @@ const PlaceOrderScreen = ({ history }) => {
   )
 
   const orderCreate = useSelector((state) => state.orderCreate)
-  const { order, success, error, loading } = orderCreate
+  const { order, success, error } = orderCreate
 
   useEffect(() => {
     if (success) {
