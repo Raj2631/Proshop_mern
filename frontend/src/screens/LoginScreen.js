@@ -10,7 +10,6 @@ import { login } from '../actions/userActions'
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  console.log(location)
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
